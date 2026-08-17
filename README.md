@@ -4,6 +4,15 @@ CivicResolve is an institutional municipal administration and civic grievance tr
 
 ---
 
+## Live Deployment & Access
+
+- **Live Administrative Portal (GitHub Pages):** [https://saurabhkun.github.io/CivicResolve-Web/](https://saurabhkun.github.io/CivicResolve-Web/)
+- **Source Code Repository:** [https://github.com/saurabhkun/CivicResolve-Web](https://github.com/saurabhkun/CivicResolve-Web)
+- **Interactive Preview Route:** [https://saurabhkun.github.io/CivicResolve-Web/preview.html](https://saurabhkun.github.io/CivicResolve-Web/preview.html)
+- **Legacy Authentication Interface:** [https://saurabhkun.github.io/CivicResolve-Web/login.html](https://saurabhkun.github.io/CivicResolve-Web/login.html)
+
+---
+
 ## Technical Stack
 
 The web interface is built using a modern frontend architecture focused on runtime performance, accessibility, and robust memory management:
@@ -13,6 +22,7 @@ The web interface is built using a modern frontend architecture focused on runti
 - **Styling Architecture:** Tailwind CSS & Custom Design System (Classic Govt Trust palette: Deep Government Blue `#1E3A5F`, Slate Neutral `#475569`, Off-White Foundation `#F7F9FB`, and Institutional Amber `#D97706`)
 - **Motion & Interpolation Engine:** GSAP (GreenSock Animation Platform) with `@gsap/react` and `ScrollTrigger` (utilizing scoped context execution for zero-leak cleanup and 60+ FPS telemetry updates)
 - **Backend & Database Service:** Supabase (PostgreSQL with real-time replication)
+- **Continuous Deployment (CI/CD):** GitHub Actions (`.github/workflows/deploy.yml`) deploying to GitHub Pages
 
 ---
 
@@ -73,9 +83,10 @@ The web interface is built using a modern frontend architecture focused on runti
    ```
 
 4. Access the administrative interfaces in your web browser:
-   - **Primary Administrative Console:** `http://localhost:3000/motion-dashboard.html`
+   - **Primary Administrative Console:** `http://localhost:3000/index.html` (or `http://localhost:3000/`)
    - **Live Preview Portal:** `http://localhost:3000/preview.html`
    - **Standard Overview:** `http://localhost:3000/dashboard.html`
+   - **Authentication Portal:** `http://localhost:3000/login.html`
 
 ---
 
@@ -94,24 +105,10 @@ To test the production build locally:
 npm run preview
 ```
 
-### GitHub Pages Deployment Configuration
-To deploy the compiled application to GitHub Pages:
+### GitHub Pages CI/CD Pipeline
+Automated deployments are managed through the GitHub Actions workflow at `.github/workflows/deploy.yml`. Every commit pushed to the `main` branch triggers an automated build and deploy process to GitHub Pages:
 
-1. Ensure the `base` property in `vite.config.js` matches your repository path if deploying to a subpath:
-   ```javascript
-   // vite.config.js
-   export default defineConfig({
-     base: '/CivicResolve-Web/',
-     plugins: [react()],
-     // ...
-   });
-   ```
-
-2. Build and push the `dist/` directory to the `gh-pages` branch:
-   ```bash
-   npm run build
-   npx gh-pages -d dist
-   ```
+- **Live URL:** [https://saurabhkun.github.io/CivicResolve-Web/](https://saurabhkun.github.io/CivicResolve-Web/)
 
 ---
 
