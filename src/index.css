@@ -1,0 +1,1122 @@
+/* ==========================================================================
+   CivicResolve Enterprise GovTech Administrative Design System
+   Architecture: High-Density, Accessible, Institutional Human-Engineered UI
+   ========================================================================== */
+
+:root {
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Consolas", "Monaco", "Courier New", monospace;
+
+  /* Solid Foundation Surfaces */
+  --bg-app: #F7F9FB;
+  --bg-surface: #FFFFFF;
+  --bg-surface-secondary: #F1F5F9;
+  --bg-surface-tertiary: #E2E8F0;
+  --bg-header: #1E3A5F;
+  --bg-header-subtle: #172D4A;
+
+  /* Crisp Structural Borders (No heavy floating shadows) */
+  --border-color: #CBD5E1;
+  --border-subtle: #E2E8F0;
+  --border-strong: #94A3B8;
+  --border-focus: #1E3A5F;
+
+  /* Institutional Typography Tokens */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-inverse: #FFFFFF;
+  --text-header: #F8FAFC;
+
+  /* Institutional Color Palette */
+  --gov-blue-primary: #1E3A5F;
+  --gov-blue-hover: #152943;
+  --gov-blue-active: #0F1E31;
+  --gov-blue-subtle: #EFF6FF;
+
+  --gov-amber: #D97706;
+  --gov-amber-hover: #B45309;
+  --gov-amber-subtle: #FEF3C7;
+
+  /* Semantic Case Status Palette */
+  --status-urgent-bg: #FEF2F2;
+  --status-urgent-text: #B91C1C;
+  --status-urgent-border: #F87171;
+
+  --status-pending-bg: #FFFBEB;
+  --status-pending-text: #92400E;
+  --status-pending-border: #FCD34D;
+
+  --status-progress-bg: #EFF6FF;
+  --status-progress-text: #1D4ED8;
+  --status-progress-border: #93C5FD;
+
+  --status-resolved-bg: #F0FDF4;
+  --status-resolved-text: #166534;
+  --status-resolved-border: #86EFAC;
+
+  /* Strict Dimensions & Radii */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --shadow-flat: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-drawer: -4px 0 24px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-size: 13px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-app);
+  position: relative;
+}
+
+/* Official Government Top Bar */
+.gov-banner {
+  background-color: #0F172A;
+  color: #94A3B8;
+  padding: 0.35rem 1.5rem;
+  font-size: 11px;
+  border-bottom: 1px solid #1E293B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gov-banner-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gov-banner-flag {
+  display: inline-block;
+  width: 14px;
+  height: 10px;
+  background: #1E3A5F;
+  border: 1px solid #475569;
+}
+
+/* Header */
+.header-wrapper {
+  background-color: var(--bg-header);
+  color: var(--text-header);
+  border-bottom: 2px solid var(--gov-amber);
+  padding: 0.65rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.header-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-seal {
+  width: 34px;
+  height: 34px;
+  background: var(--bg-header-subtle);
+  border: 1px solid #334155;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: #F8FAFC;
+  letter-spacing: 0.05em;
+}
+
+.logo-text h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.logo-sub {
+  font-size: 11px;
+  color: #94A3B8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* RBAC Role Selector in Header */
+.rbac-role-control {
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-xs);
+  padding: 0.2rem 0.5rem;
+  gap: 0.4rem;
+}
+
+.rbac-label {
+  font-size: 11px;
+  color: #94A3B8;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.rbac-select {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.rbac-select option {
+  background: #0F172A;
+  color: #FFFFFF;
+}
+
+.clearance-badge {
+  background-color: rgba(217, 119, 6, 0.2);
+  border: 1px solid rgba(217, 119, 6, 0.4);
+  color: #FDE68A;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-xs);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Administrative Toolbar Buttons */
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  transition: background-color 0.1s ease, border-color 0.1s ease;
+  text-decoration: none;
+}
+
+.admin-btn:hover {
+  background: var(--bg-surface-secondary);
+  border-color: var(--border-strong);
+}
+
+.admin-btn.primary {
+  background: var(--gov-blue-primary);
+  border-color: var(--gov-blue-primary);
+  color: #FFFFFF;
+}
+
+.admin-btn.primary:hover {
+  background: var(--gov-blue-hover);
+}
+
+.admin-btn.amber {
+  background: var(--gov-amber);
+  border-color: var(--gov-amber);
+  color: #FFFFFF;
+}
+
+.admin-btn.amber:hover {
+  background: var(--gov-amber-hover);
+}
+
+/* Main Dashboard Workspace */
+.dashboard-main {
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Administrative Control Panel Strip */
+.admin-control-bar {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-flat);
+}
+
+.control-bar-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.control-bar-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gov-blue-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.control-bar-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.admin-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.admin-select {
+  padding: 0.3rem 0.55rem;
+  font-size: 12px;
+  font-family: inherit;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.admin-select:focus {
+  outline: 2px solid var(--gov-blue-primary);
+}
+
+/* Geo-Ward Quick-Toggle Tabs */
+.ward-tab-strip {
+  display: flex;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  background: var(--bg-surface-secondary);
+}
+
+.ward-tab-btn {
+  padding: 0.3rem 0.65rem;
+  font-size: 11px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-right: 1px solid var(--border-color);
+  transition: all 0.1s ease;
+}
+
+.ward-tab-btn:last-child {
+  border-right: none;
+}
+
+.ward-tab-btn.active {
+  background: var(--gov-blue-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* High-Density Metric Overview Panel */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.75rem;
+}
+
+.metric-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  padding: 0.85rem 1rem;
+  box-shadow: var(--shadow-flat);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.metric-panel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.metric-panel-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.metric-panel-number {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.metric-panel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.metric-stat-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-stat-pill.positive {
+  background: var(--status-resolved-bg);
+  color: var(--status-resolved-text);
+  border: 1px solid var(--status-resolved-border);
+}
+
+.metric-stat-pill.negative {
+  background: var(--status-urgent-bg);
+  color: var(--status-urgent-text);
+  border: 1px solid var(--status-urgent-border);
+}
+
+.metric-stat-pill.neutral {
+  background: var(--status-progress-bg);
+  color: var(--status-progress-text);
+  border: 1px solid var(--status-progress-border);
+}
+
+/* Administrative Card Sections */
+.admin-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-flat);
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-card-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-surface-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gov-blue-primary);
+}
+
+.admin-card-subtitle {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Charts Grid */
+.charts-grid-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .charts-grid-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-content-body {
+  padding: 1rem;
+  position: relative;
+}
+
+/* Utilitarian SVG Line Chart */
+.chart-container-utilitarian {
+  position: relative;
+  width: 100%;
+  height: 230px;
+}
+
+.chart-svg-solid {
+  width: 100%;
+  height: 100%;
+}
+
+.chart-grid-line-solid {
+  stroke: #E2E8F0;
+  stroke-width: 1;
+}
+
+.chart-axis-label {
+  fill: #64748B;
+  font-size: 11px;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.line-solid-inflow {
+  fill: none;
+  stroke: #1E3A5F;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.line-solid-resolved {
+  fill: none;
+  stroke: #16A34A;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.point-solid-marker {
+  cursor: pointer;
+}
+
+/* Administrative Table Tooltip */
+.admin-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: #0F172A;
+  color: #FFFFFF;
+  border: 1px solid #334155;
+  border-radius: var(--radius-xs);
+  padding: 0.45rem 0.65rem;
+  font-size: 11px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+  white-space: nowrap;
+  transform: translate(-50%, -120%);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.admin-tooltip-title {
+  font-weight: 600;
+  font-size: 11px;
+  color: #94A3B8;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.admin-tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 11px;
+}
+
+/* Clean Structured 2D Doughnut / Breakdown */
+.breakdown-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.breakdown-donut-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 165px;
+}
+
+.donut-svg-flat {
+  width: 155px;
+  height: 155px;
+  transform: rotate(-90deg);
+}
+
+.donut-slice-flat {
+  fill: none;
+  stroke-width: 18;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.donut-slice-flat:hover {
+  opacity: 0.85;
+}
+
+.donut-center-readout {
+  position: absolute;
+  text-align: center;
+  pointer-events: none;
+}
+
+.donut-center-total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.donut-center-tag {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+}
+
+/* High-Density Breakdown List */
+.breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.breakdown-table tr {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.breakdown-table tr:last-child {
+  border-bottom: none;
+}
+
+.breakdown-table td {
+  padding: 0.35rem 0.2rem;
+}
+
+.breakdown-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+
+/* Dense Administrative Complaint Data Table */
+.table-wrapper {
+  overflow-x: auto;
+  border-top: 1px solid var(--border-color);
+}
+
+.admin-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+
+.admin-data-table th {
+  background-color: var(--bg-surface-secondary);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+.admin-data-table th:last-child {
+  border-right: none;
+}
+
+.admin-data-table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.admin-data-table td:last-child {
+  border-right: none;
+}
+
+.admin-data-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.admin-data-table tbody tr:hover {
+  background-color: #F1F5F9;
+}
+
+.admin-data-table tbody tr.selected-row {
+  background-color: #EFF6FF;
+  border-left: 3px solid var(--gov-blue-primary);
+}
+
+.case-id-cell {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--gov-blue-primary);
+}
+
+/* Strict Semantic Status Badges */
+.status-badge-solid {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius-xs);
+  white-space: nowrap;
+}
+
+.status-badge-solid.urgent {
+  background: var(--status-urgent-bg);
+  color: var(--status-urgent-text);
+  border: 1px solid var(--status-urgent-border);
+}
+
+.status-badge-solid.pending {
+  background: var(--status-pending-bg);
+  color: var(--status-pending-text);
+  border: 1px solid var(--status-pending-border);
+}
+
+.status-badge-solid.progress {
+  background: var(--status-progress-bg);
+  color: var(--status-progress-text);
+  border: 1px solid var(--status-progress-border);
+}
+
+.status-badge-solid.resolved {
+  background: var(--status-resolved-bg);
+  color: var(--status-resolved-text);
+  border: 1px solid var(--status-resolved-border);
+}
+
+/* Priority Indicator */
+.priority-pill {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.priority-pill.high {
+  color: #B91C1C;
+  font-weight: 700;
+}
+
+/* Pagination Bar */
+.admin-pagination {
+  padding: 0.65rem 0.85rem;
+  background: var(--bg-surface-secondary);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.pagination-btn {
+  padding: 0.2rem 0.5rem;
+  font-size: 11px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: var(--bg-surface-tertiary);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Interactive Dispatch Dossier Side Drawer
+   ========================================================================== */
+
+.drawer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  z-index: 200;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dossier-drawer {
+  width: 580px;
+  max-width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border-left: 2px solid var(--gov-blue-primary);
+  box-shadow: var(--shadow-drawer);
+  display: flex;
+  flex-direction: column;
+  z-index: 210;
+  overflow: hidden;
+}
+
+.drawer-header {
+  background: var(--bg-header);
+  color: #FFFFFF;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--gov-amber);
+}
+
+.drawer-header-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.drawer-header-meta {
+  font-size: 11px;
+  color: #94A3B8;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.drawer-close-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.drawer-close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.drawer-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: #FAFBFD;
+}
+
+/* Dossier Form Sections */
+.dossier-section {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  padding: 1rem;
+}
+
+.dossier-section-header {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gov-blue-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.45rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dossier-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  font-size: 12px;
+}
+
+.dossier-field label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+  font-weight: 600;
+}
+
+.dossier-field-val {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Photographic Evidence Grid */
+.evidence-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.evidence-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface-secondary);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+}
+
+.evidence-img-placeholder {
+  height: 120px;
+  background: #E2E8F0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.evidence-details {
+  padding: 0.55rem 0.75rem;
+  font-size: 11px;
+}
+
+.evidence-caption {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.evidence-exif {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+/* Historical Audit Trail Timeline */
+.audit-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.audit-timeline::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 3px;
+  width: 2px;
+  background: #CBD5E1;
+}
+
+.audit-entry {
+  position: relative;
+}
+
+.audit-dot {
+  position: absolute;
+  left: -1rem;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  background: var(--gov-blue-primary);
+  border: 1px solid #FFFFFF;
+  border-radius: 50%;
+}
+
+.audit-action-title {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text-primary);
+}
+
+.audit-actor {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 0.1rem;
+}
+
+.audit-details {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+  background: var(--bg-surface-secondary);
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Drawer Footer Controls */
+.drawer-footer {
+  padding: 0.85rem 1.25rem;
+  background: var(--bg-surface-secondary);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   Tamper-Evident Audit Verification Modal
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.7);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.audit-modal-box {
+  width: 640px;
+  max-width: 100%;
+  background: #FFFFFF;
+  border: 2px solid var(--gov-blue-primary);
+  border-radius: var(--radius-xs);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.modal-header-bar {
+  background: var(--bg-header);
+  color: #FFFFFF;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--gov-amber);
+}
+
+.modal-body-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 12px;
+}
+
+.hash-display-box {
+  background: #0F172A;
+  color: #38BDF8;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 0.75rem;
+  border-radius: var(--radius-xs);
+  word-break: break-all;
+  border: 1px solid #334155;
+}
+
+/* Institutional Footer */
+.gov-footer {
+  margin-top: auto;
+  background-color: #0F172A;
+  color: #94A3B8;
+  border-top: 2px solid #334155;
+  padding: 1.25rem 1.5rem;
+  font-size: 11px;
+}
+
+.gov-footer-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gov-footer-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.gov-footer-links a {
+  color: #CBD5E1;
+  text-decoration: none;
+}
+
+.gov-footer-links a:hover {
+  text-decoration: underline;
+  color: #FFFFFF;
+}
+
+.gov-disclaimer {
+  color: #64748B;
+  font-size: 11px;
+  margin-top: 0.35rem;
+}

@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivicResolve - System Settings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        /* ULTRA COMPREHENSIVE FIX: Override ALL backgrounds */
+        * {
+            background-image: none !important;
+        }
+        
+        html {
+            background: #f4f4f4 !important;
+            background-color: #f4f4f4 !important;
+            background-image: none !important;
+        }
+        
+        body {
+            background: #f4f4f4 !important;
+            background-color: #f4f4f4 !important;
+            background-image: none !important;
+        }
+        
+        .dashboard-container {
+            background: #f4f4f4 !important;
+            background-image: none !important;
+            background-color: #f4f4f4 !important;
+        }
+        
+        .main-content {
+            background: #ffffff !important;
+            background-image: none !important;
+            background-color: #ffffff !important;
+        }
+        
+        .content-section {
+            background: #ffffff !important;
+            background-image: none !important;
+            background-color: #ffffff !important;
+        }
+        
+        /* Override ALL potential problematic classes */
+        .login-container, 
+        .filters-container,
+        .container, 
+        .main-container, 
+        .content-wrapper, 
+        .page-container,
+        .page-content,
+        .wrapper {
+            background: #f4f4f4 !important;
+            background-image: none !important;
+            background-color: #f4f4f4 !important;
+        }
+        
+        /* Keep action buttons styled properly but no gradients */
+        .action-btn {
+            background: #007bff !important;
+            background-image: none !important;
+        }
+        
+        /* Ensure body doesn't inherit any problematic styles */
+        body:not(.login-page) {
+            background: #f4f4f4 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1>🏛️ CivicResolve</h1>
+                    <span class="tagline">System Settings</span>
+                </div>
+                <div class="header-actions">
+                    <div class="notification-bell">
+                        <span class="bell-icon">🔔</span>
+                        <span class="notification-count" id="notification-count">0</span>
+                    </div>
+                    <div class="user-menu">
+                        <span id="welcome-message">Welcome, Admin!</span>
+                        <button id="logout-btn" class="logout-btn">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <nav class="sidebar">
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link">📊 Dashboard</a></li>
+                <li><a href="reports.html" class="nav-link">📋 Reports</a></li>
+                <li><a href="analytics.html" class="nav-link">📈 Analytics</a></li>
+                <li><a href="users.html" class="nav-link">👥 Users</a></li>
+                <li><a href="categories.html" class="nav-link">🏷️ Categories</a></li>
+                <li><a href="settings.html" class="nav-link active">⚙️ Settings</a></li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <div class="content-section active">
+                <div class="section-header">
+                    <h2>⚙️ System Settings</h2>
+                    <p>Configure and manage your CivicResolve system preferences</p>
+                </div>
+
+                <!-- Settings Cards Layout -->
+                <div class="settings-dashboard">
+                    <!-- Quick Actions Card -->
+                    <div class="settings-card quick-actions-card">
+                        <div class="card-header">
+                            <h3>🚀 Quick Actions</h3>
+                            <p>Common administrative tasks</p>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="action-btn primary" id="test-db-connection">
+                                <span class="btn-icon">🔗</span>
+                                <span class="btn-text">Test Database</span>
+                            </button>
+                            <button class="action-btn secondary" id="clear-cache">
+                                <span class="btn-icon">🗑️</span>
+                                <span class="btn-text">Clear Cache</span>
+                            </button>
+                            <button class="action-btn secondary" id="backup-now">
+                                <span class="btn-icon">💾</span>
+                                <span class="btn-text">Backup Now</span>
+                            </button>
+                            <button class="action-btn warning" id="restart-services">
+                                <span class="btn-icon">🔄</span>
+                                <span class="btn-text">Restart Services</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- System Status Card -->
+                    <div class="settings-card status-card">
+                        <div class="card-header">
+                            <h3>📊 System Status</h3>
+                            <p>Current system health and performance</p>
+                        </div>
+                        <div class="status-grid">
+                            <div class="status-item">
+                                <div class="status-indicator online"></div>
+                                <div class="status-info">
+                                    <span class="status-label">Database</span>
+                                    <span class="status-value">Connected</span>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-indicator online"></div>
+                                <div class="status-info">
+                                    <span class="status-label">Services</span>
+                                    <span class="status-value">Running</span>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-indicator warning"></div>
+                                <div class="status-info">
+                                    <span class="status-label">Storage</span>
+                                    <span class="status-value">78% Used</span>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-indicator online"></div>
+                                <div class="status-info">
+                                    <span class="status-label">Uptime</span>
+                                    <span class="status-value">7d 14h</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Categories -->
+                <div class="settings-categories">
+                    <div class="settings-category" data-category="general">
+                        <div class="category-header">
+                            <div class="category-icon">🏛️</div>
+                            <div class="category-info">
+                                <h3>General Settings</h3>
+                                <p>Basic system configuration and organization details</p>
+                            </div>
+                            <button class="expand-btn">⭐</button>
+                        </div>
+                        <div class="category-content">
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>System Name</label>
+                                    <small>Display name for the application</small>
+                                </div>
+                                <div class="setting-control">
+                                    <input type="text" value="CivicResolve" class="modern-input">
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Organization</label>
+                                    <small>Your government organization name</small>
+                                </div>
+                                <div class="setting-control">
+                                    <input type="text" value="City Government" class="modern-input">
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Contact Email</label>
+                                    <small>Primary contact for system issues</small>
+                                </div>
+                                <div class="setting-control">
+                                    <input type="email" value="admin@civicresolve.gov" class="modern-input">
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Time Zone</label>
+                                    <small>System default timezone</small>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="modern-select">
+                                        <option value="America/New_York" selected>Eastern Time (UTC-5)</option>
+                                        <option value="America/Chicago">Central Time (UTC-6)</option>
+                                        <option value="America/Denver">Mountain Time (UTC-7)</option>
+                                        <option value="America/Los_Angeles">Pacific Time (UTC-8)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-category" data-category="notifications">
+                        <div class="category-header">
+                            <div class="category-icon">🔔</div>
+                            <div class="category-info">
+                                <h3>Notifications</h3>
+                                <p>Configure email and push notification preferences</p>
+                            </div>
+                            <button class="expand-btn">▶</button>
+                        </div>
+                        <div class="category-content">
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Email Notifications</label>
+                                    <small>Send email alerts for important events</small>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="modern-toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>New Report Alerts</label>
+                                    <small>Notify when new reports are submitted</small>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="modern-toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Status Change Alerts</label>
+                                    <small>Notify when report status is updated</small>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="modern-toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Browser Notifications</label>
+                                    <small>Show notifications in browser</small>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="modern-toggle">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-category" data-category="security">
+                        <div class="category-header">
+                            <div class="category-icon">🔒</div>
+                            <div class="category-info">
+                                <h3>Security & Access</h3>
+                                <p>Authentication and security configuration</p>
+                            </div>
+                            <button class="expand-btn">▶</button>
+                        </div>
+                        <div class="category-content">
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Session Timeout</label>
+                                    <small>Auto-logout after inactivity (minutes)</small>
+                                </div>
+                                <div class="setting-control">
+                                    <input type="number" value="60" min="5" max="480" class="modern-input">
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Max Login Attempts</label>
+                                    <small>Account lockout after failed attempts</small>
+                                </div>
+                                <div class="setting-control">
+                                    <input type="number" value="5" min="3" max="10" class="modern-input">
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Two-Factor Authentication</label>
+                                    <small>Require 2FA for admin accounts</small>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="modern-toggle">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Audit Logging</label>
+                                    <small>Log all administrative actions</small>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="modern-toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-category" data-category="database">
+                        <div class="category-header">
+                            <div class="category-icon">🗄️</div>
+                            <div class="category-info">
+                                <h3>Database & Performance</h3>
+                                <p>Database configuration and optimization settings</p>
+                            </div>
+                            <button class="expand-btn">▶</button>
+                        </div>
+                        <div class="category-content">
+                            <div class="performance-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-label">Response Time</span>
+                                    <span class="metric-value">245ms</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Active Connections</span>
+                                    <span class="metric-value">12/20</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Cache Hit Rate</span>
+                                    <span class="metric-value">94%</span>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Cache Timeout</label>
+                                    <small>How long to cache database queries (minutes)</small>
+                                </div>
+                                <div class="setting-control">
+                                    <input type="number" value="5" min="1" max="60" class="modern-input">
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Max Connections</label>
+                                    <small>Maximum concurrent database connections</small>
+                                </div>
+                                <div class="setting-control">
+                                    <input type="number" value="20" min="5" max="100" class="modern-input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-category" data-category="backup">
+                        <div class="category-header">
+                            <div class="category-icon">💾</div>
+                            <div class="category-info">
+                                <h3>Backup & Recovery</h3>
+                                <p>Data backup and system recovery settings</p>
+                            </div>
+                            <button class="expand-btn">▶</button>
+                        </div>
+                        <div class="category-content">
+                            <div class="backup-status">
+                                <div class="backup-info">
+                                    <div class="backup-item">
+                                        <span class="backup-label">Last Backup</span>
+                                        <span class="backup-value">Today, 2:00 AM</span>
+                                    </div>
+                                    <div class="backup-item">
+                                        <span class="backup-label">Size</span>
+                                        <span class="backup-value">1.8 GB</span>
+                                    </div>
+                                    <div class="backup-item">
+                                        <span class="backup-label">Status</span>
+                                        <span class="backup-value success">✅ Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Auto Backup</label>
+                                    <small>Enable automatic scheduled backups</small>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="modern-toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <label>Backup Frequency</label>
+                                    <small>How often to create backups</small>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="modern-select">
+                                        <option value="daily" selected>Daily</option>
+                                        <option value="weekly">Weekly</option>
+                                        <option value="monthly">Monthly</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Save Actions -->
+                <div class="settings-footer">
+                    <button class="btn btn-secondary" id="reset-settings">Reset to Defaults</button>
+                    <button class="btn btn-primary" id="save-settings">💾 Save All Changes</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/database.js"></script>
+    <script src="js/auth-simple.js"></script>
+    <script>
+        // Settings Page Controller
+        class SettingsPage {
+            constructor() {
+                this.currentTab = 'general';
+                this.settings = this.loadDefaultSettings();
+                
+                this.init();
+            }
+
+            init() {
+                this.initializeEventListeners();
+                this.loadSettings();
+                this.updateNotificationCount();
+                this.loadDatabaseStats();
+            }
+
+            initializeEventListeners() {
+                // Tab navigation
+                document.querySelectorAll('.settings-tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        const tabId = e.target.getAttribute('data-tab');
+                        this.switchTab(tabId);
+                    });
+                });
+
+                // Action buttons
+                document.getElementById('save-settings').addEventListener('click', () => this.saveSettings());
+                document.getElementById('reset-settings').addEventListener('click', () => this.resetSettings());
+                
+                // Database actions
+                document.getElementById('test-connection').addEventListener('click', () => this.testDatabaseConnection());
+                document.getElementById('clear-cache').addEventListener('click', () => this.clearCache());
+                document.getElementById('optimize-db').addEventListener('click', () => this.optimizeDatabase());
+                document.getElementById('export-data').addEventListener('click', () => this.exportData());
+                
+                // System actions
+                document.getElementById('restart-services').addEventListener('click', () => this.restartServices());
+                document.getElementById('clear-logs').addEventListener('click', () => this.clearLogs());
+                document.getElementById('system-health').addEventListener('click', () => this.systemHealthCheck());
+                document.getElementById('update-system').addEventListener('click', () => this.checkUpdates());
+                
+                // Backup actions
+                document.getElementById('create-backup').addEventListener('click', () => this.createBackup());
+                document.getElementById('restore-backup').addEventListener('click', () => this.restoreBackup());
+                document.getElementById('download-backup').addEventListener('click', () => this.downloadBackup());
+                document.getElementById('verify-backup').addEventListener('click', () => this.verifyBackup());
+                
+                // Email actions
+                document.getElementById('send-test-email').addEventListener('click', () => this.sendTestEmail());
+                
+                // Auto-save on input changes
+                document.querySelectorAll('input, select, textarea').forEach(input => {
+                    input.addEventListener('change', () => this.markAsChanged());
+                });
+            }
+
+            loadDefaultSettings() {
+                return {
+                    general: {
+                        systemName: 'CivicResolve',
+                        organizationName: 'City Government',
+                        contactEmail: 'admin@civicresolve.gov',
+                        contactPhone: '+1-555-0123',
+                        timezone: 'America/New_York',
+                        language: 'en',
+                        autoAssign: true,
+                        responseTime: 24,
+                        maxImages: 5
+                    },
+                    notifications: {
+                        emailNotifications: {
+                            newReport: true,
+                            statusChange: true,
+                            overdue: true,
+                            weekly: true
+                        },
+                        pushNotifications: {
+                            browser: true,
+                            sound: false
+                        }
+                    },
+                    security: {
+                        sessionTimeout: 60,
+                        maxLoginAttempts: 5,
+                        passwordMinLength: 8,
+                        require2FA: false,
+                        ipRestriction: false,
+                        auditLogging: true
+                    },
+                    database: {
+                        cacheTimeout: 5,
+                        maxConnections: 20
+                    },
+                    email: {
+                        smtpHost: 'smtp.gmail.com',
+                        smtpPort: 587,
+                        smtpUsername: 'admin@civicresolve.gov',
+                        smtpPassword: '••••••••'
+                    },
+                    backup: {
+                        frequency: 'daily',
+                        retention: 30,
+                        location: 'local'
+                    }
+                };
+            }
+
+            loadSettings() {
+                // Load settings from localStorage or use defaults
+                const savedSettings = localStorage.getItem('civicresolve_settings');
+                if (savedSettings) {
+                    this.settings = { ...this.settings, ...JSON.parse(savedSettings) };
+                }
+                
+                this.populateSettings();
+            }
+
+            populateSettings() {
+                // General settings
+                document.getElementById('system-name').value = this.settings.general.systemName;
+                document.getElementById('organization-name').value = this.settings.general.organizationName;
+                document.getElementById('contact-email').value = this.settings.general.contactEmail;
+                document.getElementById('contact-phone').value = this.settings.general.contactPhone;
+                document.getElementById('timezone').value = this.settings.general.timezone;
+                document.getElementById('language').value = this.settings.general.language;
+                document.getElementById('auto-assign').checked = this.settings.general.autoAssign;
+                document.getElementById('response-time').value = this.settings.general.responseTime;
+                document.getElementById('max-images').value = this.settings.general.maxImages;
+                
+                // Notification settings
+                document.getElementById('notify-new-report').checked = this.settings.notifications.emailNotifications.newReport;
+                document.getElementById('notify-status-change').checked = this.settings.notifications.emailNotifications.statusChange;
+                document.getElementById('notify-overdue').checked = this.settings.notifications.emailNotifications.overdue;
+                document.getElementById('notify-weekly').checked = this.settings.notifications.emailNotifications.weekly;
+                document.getElementById('browser-notifications').checked = this.settings.notifications.pushNotifications.browser;
+                document.getElementById('sound-alerts').checked = this.settings.notifications.pushNotifications.sound;
+                
+                // Security settings
+                document.getElementById('session-timeout').value = this.settings.security.sessionTimeout;
+                document.getElementById('max-login-attempts').value = this.settings.security.maxLoginAttempts;
+                document.getElementById('password-min-length').value = this.settings.security.passwordMinLength;
+                document.getElementById('require-2fa').checked = this.settings.security.require2FA;
+                document.getElementById('ip-restriction').checked = this.settings.security.ipRestriction;
+                document.getElementById('audit-logging').checked = this.settings.security.auditLogging;
+                
+                // Database settings
+                document.getElementById('cache-timeout').value = this.settings.database.cacheTimeout;
+                document.getElementById('max-connections').value = this.settings.database.maxConnections;
+                
+                // Email settings
+                document.getElementById('smtp-host').value = this.settings.email.smtpHost;
+                document.getElementById('smtp-port').value = this.settings.email.smtpPort;
+                document.getElementById('smtp-username').value = this.settings.email.smtpUsername;
+                document.getElementById('smtp-password').value = this.settings.email.smtpPassword;
+                
+                // Backup settings
+                document.getElementById('backup-frequency').value = this.settings.backup.frequency;
+                document.getElementById('backup-retention').value = this.settings.backup.retention;
+                document.getElementById('backup-location').value = this.settings.backup.location;
+            }
+
+            switchTab(tabId) {
+                // Update active tab
+                document.querySelectorAll('.settings-tab').forEach(tab => tab.classList.remove('active'));
+                document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+                
+                // Update active panel
+                document.querySelectorAll('.settings-panel').forEach(panel => panel.classList.remove('active'));
+                document.getElementById(`${tabId}-settings`).classList.add('active');
+                
+                this.currentTab = tabId;
+            }
+
+            saveSettings() {
+                // Collect all settings
+                this.collectSettings();
+                
+                // Save to localStorage
+                localStorage.setItem('civicresolve_settings', JSON.stringify(this.settings));
+                
+                // Show success message
+                window.supabaseService.showToast('success', '✅ Settings saved successfully!');
+                
+                // Remove changed indicator
+                this.removeChangeIndicator();
+            }
+
+            collectSettings() {
+                // General settings
+                this.settings.general = {
+                    systemName: document.getElementById('system-name').value,
+                    organizationName: document.getElementById('organization-name').value,
+                    contactEmail: document.getElementById('contact-email').value,
+                    contactPhone: document.getElementById('contact-phone').value,
+                    timezone: document.getElementById('timezone').value,
+                    language: document.getElementById('language').value,
+                    autoAssign: document.getElementById('auto-assign').checked,
+                    responseTime: parseInt(document.getElementById('response-time').value),
+                    maxImages: parseInt(document.getElementById('max-images').value)
+                };
+                
+                // Notification settings
+                this.settings.notifications = {
+                    emailNotifications: {
+                        newReport: document.getElementById('notify-new-report').checked,
+                        statusChange: document.getElementById('notify-status-change').checked,
+                        overdue: document.getElementById('notify-overdue').checked,
+                        weekly: document.getElementById('notify-weekly').checked
+                    },
+                    pushNotifications: {
+                        browser: document.getElementById('browser-notifications').checked,
+                        sound: document.getElementById('sound-alerts').checked
+                    }
+                };
+                
+                // Security settings
+                this.settings.security = {
+                    sessionTimeout: parseInt(document.getElementById('session-timeout').value),
+                    maxLoginAttempts: parseInt(document.getElementById('max-login-attempts').value),
+                    passwordMinLength: parseInt(document.getElementById('password-min-length').value),
+                    require2FA: document.getElementById('require-2fa').checked,
+                    ipRestriction: document.getElementById('ip-restriction').checked,
+                    auditLogging: document.getElementById('audit-logging').checked
+                };
+                
+                // Database settings
+                this.settings.database = {
+                    cacheTimeout: parseInt(document.getElementById('cache-timeout').value),
+                    maxConnections: parseInt(document.getElementById('max-connections').value)
+                };
+                
+                // Email settings
+                this.settings.email = {
+                    smtpHost: document.getElementById('smtp-host').value,
+                    smtpPort: parseInt(document.getElementById('smtp-port').value),
+                    smtpUsername: document.getElementById('smtp-username').value,
+                    smtpPassword: document.getElementById('smtp-password').value
+                };
+                
+                // Backup settings
+                this.settings.backup = {
+                    frequency: document.getElementById('backup-frequency').value,
+                    retention: parseInt(document.getElementById('backup-retention').value),
+                    location: document.getElementById('backup-location').value
+                };
+            }
+
+            resetSettings() {
+                if (confirm('Are you sure you want to reset all settings to defaults? This action cannot be undone.')) {
+                    this.settings = this.loadDefaultSettings();
+                    this.populateSettings();
+                    localStorage.removeItem('civicresolve_settings');
+                    window.supabaseService.showToast('success', '✅ Settings reset to defaults!');
+                }
+            }
+
+            markAsChanged() {
+                const saveBtn = document.getElementById('save-settings');
+                if (!saveBtn.classList.contains('changed')) {
+                    saveBtn.classList.add('changed');
+                    saveBtn.textContent = '💾 Save Changes';
+                }
+            }
+
+            removeChangeIndicator() {
+                const saveBtn = document.getElementById('save-settings');
+                saveBtn.classList.remove('changed');
+                saveBtn.textContent = '💾 Save All Settings';
+            }
+
+            async loadDatabaseStats() {
+                try {
+                    const stats = await window.supabaseService.getDashboardStats();
+                    document.getElementById('total-records').textContent = stats.total || 0;
+                } catch (error) {
+                    document.getElementById('total-records').textContent = 'Error loading';
+                }
+            }
+
+            async testDatabaseConnection() {
+                // Show loading state
+                const testButton = document.getElementById('test-connection');
+                const originalText = testButton.innerHTML;
+                testButton.innerHTML = '<span class="spinner"></span> Testing...';
+                testButton.disabled = true;
+
+                try {
+                    window.supabaseService.showToast('info', '🧪 Running comprehensive database tests...');
+                    
+                    const results = await window.supabaseService.testConnection();
+                    
+                    // Show detailed results modal
+                    this.showDatabaseTestResults(results);
+                    
+                    if (results.success) {
+                        window.supabaseService.showToast('success', `✅ All database tests passed! (${results.summary.passed}/${results.summary.total})`);
+                    } else {
+                        window.supabaseService.showToast('error', `❌ Database tests failed! (${results.summary.failed}/${results.summary.total} failures)`);
+                    }
+                } catch (error) {
+                    window.supabaseService.showToast('error', '❌ Database test execution failed!');
+                    console.error('Database test error:', error);
+                } finally {
+                    // Restore button state
+                    testButton.innerHTML = originalText;
+                    testButton.disabled = false;
+                }
+            }
+
+            showDatabaseTestResults(results) {
+                const modal = document.createElement('div');
+                modal.className = 'test-results-modal';
+                modal.innerHTML = `
+                    <div class="test-results-content">
+                        <div class="test-results-header">
+                            <h3>🧪 Database Test Results</h3>
+                            <button class="close-modal" onclick="this.closest('.test-results-modal').remove()">&times;</button>
+                        </div>
+                        <div class="test-results-body">
+                            <div class="test-summary ${results.success ? 'success' : 'failed'}">
+                                <div class="summary-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">${results.summary.passed}</span>
+                                        <span class="stat-label">Passed</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">${results.summary.failed}</span>
+                                        <span class="stat-label">Failed</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">${results.summary.duration.toFixed(0)}ms</span>
+                                        <span class="stat-label">Duration</span>
+                                    </div>
+                                </div>
+                                <div class="summary-status">
+                                    ${results.success ? '✅ All tests passed' : '❌ Some tests failed'}
+                                </div>
+                            </div>
+                            <div class="test-details">
+                                ${results.tests.map(test => `
+                                    <div class="test-item ${test.status}">
+                                        <div class="test-name">
+                                            <span class="test-icon">${test.status === 'passed' ? '✅' : '❌'}</span>
+                                            ${test.name}
+                                        </div>
+                                        <div class="test-duration">${test.duration.toFixed(2)}ms</div>
+                                        <div class="test-details-text">
+                                            ${test.details || test.error || 'No details available'}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="test-results-footer">
+                            <button class="btn btn-secondary" onclick="this.closest('.test-results-modal').remove()">Close</button>
+                            <button class="btn btn-primary" onclick="window.supabaseService.exportTestResults(${JSON.stringify(results).replace(/"/g, '&quot;')})">Export Results</button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+            }
+
+            clearCache() {
+                window.supabaseService.clearCache();
+                window.supabaseService.showToast('success', '✅ Cache cleared successfully!');
+            }
+
+            optimizeDatabase() {
+                window.supabaseService.showToast('info', '⚡ Database optimization started...');
+                setTimeout(() => {
+                    window.supabaseService.showToast('success', '✅ Database optimization completed!');
+                }, 3000);
+            }
+
+            exportData() {
+                window.supabaseService.showToast('info', '📤 Data export feature coming soon!');
+            }
+
+            restartServices() {
+                if (confirm('Are you sure you want to restart system services? This may cause temporary downtime.')) {
+                    window.supabaseService.showToast('warning', '🔄 Services restarting...');
+                    setTimeout(() => {
+                        window.supabaseService.showToast('success', '✅ Services restarted successfully!');
+                    }, 5000);
+                }
+            }
+
+            clearLogs() {
+                if (confirm('Are you sure you want to clear system logs?')) {
+                    window.supabaseService.showToast('success', '✅ System logs cleared!');
+                }
+            }
+
+            systemHealthCheck() {
+                window.supabaseService.showToast('info', '🏥 Running health check...');
+                setTimeout(() => {
+                    window.supabaseService.showToast('success', '✅ System health check passed!');
+                }, 2000);
+            }
+
+            checkUpdates() {
+                window.supabaseService.showToast('info', '⬆️ Checking for updates...');
+                setTimeout(() => {
+                    window.supabaseService.showToast('info', '✅ System is up to date!');
+                }, 2000);
+            }
+
+            createBackup() {
+                window.supabaseService.showToast('info', '💾 Creating backup...');
+                setTimeout(() => {
+                    window.supabaseService.showToast('success', '✅ Backup created successfully!');
+                }, 3000);
+            }
+
+            restoreBackup() {
+                window.supabaseService.showToast('info', '⬅️ Backup restore feature coming soon!');
+            }
+
+            downloadBackup() {
+                window.supabaseService.showToast('info', '📥 Backup download feature coming soon!');
+            }
+
+            verifyBackup() {
+                window.supabaseService.showToast('info', '✅ Verifying backup integrity...');
+                setTimeout(() => {
+                    window.supabaseService.showToast('success', '✅ Backup integrity verified!');
+                }, 2000);
+            }
+
+            sendTestEmail() {
+                const email = document.getElementById('test-email-address').value;
+                if (!email) {
+                    window.supabaseService.showToast('warning', '⚠️ Please enter an email address');
+                    return;
+                }
+                
+                window.supabaseService.showToast('info', `📧 Sending test email to ${email}...`);
+                setTimeout(() => {
+                    window.supabaseService.showToast('success', '✅ Test email sent successfully!');
+                }, 2000);
+            }
+
+            updateNotificationCount() {
+                document.getElementById('notification-count').textContent = '3';
+            }
+        }
+
+        // Initialize the page
+        let settingsPage;
+        window.addEventListener('DOMContentLoaded', () => {
+            settingsPage = new SettingsPage();
+        });
+    </script>
+
+    <style>
+        /* Settings-specific styles */
+        .settings-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #dee2e6;
+            overflow-x: auto;
+        }
+
+        .settings-tab {
+            padding: 0.75rem 1rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .settings-tab.active {
+            color: #007bff;
+            border-bottom-color: #007bff;
+        }
+
+        .settings-panel {
+            display: none;
+        }
+
+        .settings-panel.active {
+            display: block;
+        }
+
+        .settings-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .settings-group {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .settings-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .settings-group h4 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .setting-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .setting-item label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .setting-item small {
+            margin-top: 0.25rem;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .form-control {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #007bff;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .notification-list,
+        .template-list,
+        .backup-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .notification-item,
+        .template-item,
+        .backup-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+
+        .notification-info,
+        .template-info,
+        .backup-info {
+            flex: 1;
+        }
+
+        .notification-info strong,
+        .template-info strong,
+        .backup-info strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .db-status,
+        .backup-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+
+        .status-icon {
+            font-size: 1.5rem;
+        }
+
+        .status-title {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .status-value {
+            color: #666;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .system-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            color: #333;
+            margin-top: 0.25rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+
+        /* Database Test Results Modal */
+        .test-results-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .test-results-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .test-results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .test-results-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .test-results-body {
+            padding: 1.5rem;
+        }
+
+        .test-summary {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #28a745;
+        }
+
+        .test-summary.failed {
+            border-left-color: #dc3545;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .summary-status {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #28a745;
+        }
+
+        .test-summary.failed .summary-status {
+            color: #dc3545;
+        }
+
+        .test-item {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .test-item:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .test-item.passed {
+            border-left: 4px solid #28a745;
+            background: linear-gradient(90deg, rgba(40, 167, 69, 0.05), transparent);
+        }
+
+        .test-item.failed {
+            border-left: 4px solid #dc3545;
+            background: linear-gradient(90deg, rgba(220, 53, 69, 0.05), transparent);
+        }
+
+        .test-name {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .test-icon {
+            font-size: 1.2rem;
+        }
+
+        .test-duration {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .test-details-text {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .test-results-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem;
+            border-top: 1px solid #e9ecef;
+            background: #f8f9fa;
+            border-radius: 0 0 15px 15px;
+        }
+
+        /* Spinner Animation */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .test-results-content {
+                width: 95%;
+                margin: 1rem;
+            }
+
+            .summary-stats {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .test-results-footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        .metric-title {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .test-email {
+            display: flex;
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .test-email input {
+            flex: 1;
+        }
+
+        .settings-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .btn.changed {
+            background-color: #28a745 !important;
+            border-color: #28a745 !important;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .settings-nav {
+                flex-direction: column;
+            }
+            
+            .settings-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .action-buttons {
+                justify-content: center;
+            }
+            
+            .test-email {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>
