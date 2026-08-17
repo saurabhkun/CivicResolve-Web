@@ -7,12 +7,13 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    open: '/motion-dashboard.html'
+    open: true
   },
   build: {
     rollupOptions: {
       input: {
-        main: resolve(import.meta.dirname, 'motion-dashboard.html'),
+        main: resolve(import.meta.dirname, 'index.html'),
+        motion: resolve(import.meta.dirname, 'motion-dashboard.html'),
         preview: resolve(import.meta.dirname, 'preview.html')
       }
     }
